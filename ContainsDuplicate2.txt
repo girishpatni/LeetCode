@@ -1,0 +1,16 @@
+public class Solution {
+    public boolean containsNearbyDuplicate(int[] nums, int k) {
+        if(nums.length>1 && k>0){
+        Set<Integer>probe = new HashSet<Integer>();
+        for(int i=0;i<nums.length;i++){
+            if(i>k)
+                probe.remove(nums[i-k-1]);
+            if(probe.contains(nums[i]))
+                return true;
+            else
+                probe.add(nums[i]);
+            }    
+        }
+        return false;
+    }
+}
