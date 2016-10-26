@@ -1,0 +1,20 @@
+public class Solution {
+    public void rotate(int[] nums, int k) {
+        if(nums.length>1 && k>0 && k!=nums.length){
+            int start=0;
+            int swappos=k%nums.length;
+            int tmp=0;
+            for(int i=0;i<nums.length;i++){
+                if(swappos==start){
+                    start++;
+                    swappos=(start+k)%nums.length;
+                    continue;
+                }
+                tmp=nums[start];
+                nums[start]=nums[swappos];
+                nums[swappos]=tmp;
+                swappos=(swappos+k)%nums.length;
+            }
+        }
+}
+}
