@@ -1,0 +1,26 @@
+public class Solution {
+    public List<List<Integer>> generate(int numRows) {
+        Set<Integer>binomials = new HashSet<Integer>();
+        List<List<Integer>> result = new ArrayList<List<Integer>>();
+        if(numRows<0)
+        return result;
+        for(int rows =0 ;rows<numRows;rows++){
+            List<Integer> temp = new ArrayList<Integer>();
+            for(int cols =0;cols<=rows;cols++){
+                temp.add(binomialCoeff(rows,cols));
+            }
+            result.add(temp);
+        }
+        return result;
+    }
+    private int binomialCoeff(int n, int k){
+        int result =1 ;
+        if(k>n-k)
+            k=n-k;
+        for(int i=0;i<k;i++){
+            result *= n-i;
+            result /=i+1;
+        }
+        return result;
+    }
+}

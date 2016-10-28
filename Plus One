@@ -1,0 +1,19 @@
+public class Solution {
+    public int[] plusOne(int[] digits) {
+    if (digits == null || digits.length == 0)
+        return null;
+    int n = digits.length, carry = 1;
+    for (int i = n - 1; i >= 0; i--) {
+        int sum = digits[i] + carry;
+        digits[i] = sum % 10;
+        carry = sum / 10;        
+    }
+    if (carry == 0)
+    	return digits;
+    int[] a = new int[n + 1];
+    System.arraycopy(digits, 0, a, 1, n);
+    a[0] = carry;
+    return a;
+}
+
+}
