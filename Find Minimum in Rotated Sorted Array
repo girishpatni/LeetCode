@@ -1,0 +1,14 @@
+public class Solution {
+    public int findMin(int[] nums) {
+        return searchMin(nums,0,nums.length-1);
+    }
+    private int searchMin(int []nums, int start,int end){
+        if(start==end|| nums[start]<nums[end])//array sorted
+            return nums[start];
+        int mid = start+ (end-start)/2;
+        if(nums[start]<nums[mid]|| mid==start)//minimum is in second half
+            return searchMin(nums,mid+1,end);
+        return searchMin(nums,start,mid);
+            
+    }
+}

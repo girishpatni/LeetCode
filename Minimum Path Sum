@@ -1,0 +1,22 @@
+public class Solution {
+    private int m=0,n=0;
+    private int[][]wt=null;
+    public int minPathSum(int[][] grid) {
+        m=grid.length;
+        n=grid[0].length;
+        wt=new int[m][n];
+        return getMinWeight(grid,0,0);
+    }
+    public int getMinWeight(int[][]grid, int row, int col){
+        if(row>m-1 || col>n-1)return Integer.MAX_VALUE;
+        if(row==m-1 && col==n-1)return grid[m-1][n-1];
+        if(wt[row][col]!=0)return wt[row][col];
+        int rightWt = Integer.MAX_VALUE;
+        int downWt = Integer.MAX_VALUE;
+        if(row<m-1)rightWt=getMinWeight(grid,row+1,col);
+        if(col<n-1)downWt=getMinWeight(grid,row,col+1);
+        int result= rightWt<downWt?grid[row][col]+rightWt:grid[row][col]+downWt;
+        wt[row][col]=result;
+        return result;
+    }
+}
